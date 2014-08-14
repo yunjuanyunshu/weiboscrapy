@@ -87,7 +87,8 @@ class WeibologinSpider(scrapy.Spider):
 #		req = urllib2.Request(url='http://weibo.com/Laruence')
 		result = urllib2.urlopen('http://weibo.com/Laruence')
 		fff=open("/var/www/lar.html",'w')
-		fff.write(result.read().replace(r'\"',"'").replace(r'\n','').replace(r'\r','').replace(r'\t','').replace(r'<script>FM.view({"ns":"pl.content.homeFeed.index","domid":"Pl_Core_OwnerFeed__3","css":["style/css/module/frameset/comb_PRF_feed.css?version=','').replace(r'"],"js":"page/js/pl/content/homeFeed/index.js?version=','').replace(r'","html":','').replace('"','').replace(r'\/','/'))
+#not the best	fff.write(result.read().replace(r'\"',"'").replace(r'\n','').replace(r'\r','').replace(r'\t','').replace(r'<script>FM.view({"ns":"pl.content.homeFeed.index","domid":"Pl_Core_OwnerFeed__3","css":["style/css/module/frameset/comb_PRF_feed.css?version=','').replace(r'"],"js":"page/js/pl/content/homeFeed/index.js?version=','').replace(r'","html":','').replace('"','').replace(r'\/','/'))
+		fff.write(result.read().replace(r'\"',"'").replace(r'\n','').replace(r'\r','').replace(r'\t','').replace(r'<script>','').replace(r'\/','/'))
 		return Request("http://localhost/lar.html",callback=self.parse_lar,dont_filter=True)
 
 	def parse_lar(self,response):
